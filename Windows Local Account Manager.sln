@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WIN Lam_Client", "WIN Lam_Client\WIN Lam_Client.csproj", "{483B6D62-66A6-4D27-8625-789F1AE10683}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WIN Lam Admin", "WIN Lam Admin\WIN Lam Admin.csproj", "{8F4E87FB-2ED8-405E-B148-CD21D2E1D6F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{483B6D62-66A6-4D27-8625-789F1AE10683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{483B6D62-66A6-4D27-8625-789F1AE10683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{483B6D62-66A6-4D27-8625-789F1AE10683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{483B6D62-66A6-4D27-8625-789F1AE10683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F4E87FB-2ED8-405E-B148-CD21D2E1D6F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F4E87FB-2ED8-405E-B148-CD21D2E1D6F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F4E87FB-2ED8-405E-B148-CD21D2E1D6F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F4E87FB-2ED8-405E-B148-CD21D2E1D6F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {84E703D4-57B9-44BE-9131-680E8F1ECF57}
+	EndGlobalSection
+EndGlobal
