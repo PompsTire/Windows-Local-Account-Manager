@@ -60,7 +60,7 @@ namespace WIN_Lam_Client
                     Console.WriteLine("Creating New User Account");
                     objLUA.CreateLocalAcct(userAccountName, userAccountPassword, appSettings["localRole"], "");
                 }
-
+                           
                 if (objLUA.IsError)
                 {
                     Console.WriteLine(objLUA.ErrorMessage);
@@ -72,11 +72,26 @@ namespace WIN_Lam_Client
             }
             else
             {
-                Console.WriteLine("Password is current. Update not needed");
+                Console.WriteLine("Password is current");
             }
 
-            Console.WriteLine("Finished. Press Any Key...");
-            Console.ReadKey();
+            // Check the client command queue and execute any pending aux commands
+            //  
+            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine("Checking For Queued Commands...");
+            WS_ClientCommands objCC = new WS_ClientCommands();
+            if (objCC.IsPendingCommands())
+            {
+                Console.WriteLine("Executing " + objCC.CommCount.ToString() + " Queued Commands");
+                objCC.ExecutePending();
+                if (objCC.IsError)
+                    Console.WriteLine("Errors Encountered: " + objCC.ErrorMessage);
+                else
+                    Console.WriteLine("Completed With No Errors");
+            }
+
+            //Console.WriteLine("Finished. Press Any Key...");
+            //Console.ReadKey();
         }
 
         private static string RandomPasswordGenerator(int CharLength)

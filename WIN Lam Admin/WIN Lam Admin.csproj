@@ -35,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cls_ADS.cs" />
     <Compile Include="cls_AES.cs" />
     <Compile Include="frmAdmin.cs">
       <SubType>Form</SubType>
@@ -53,10 +56,46 @@
     <Compile Include="frmAdmin.Designer.cs">
       <DependentUpon>frmAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmClientCommands.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClientCommands.Designer.cs">
+      <DependentUpon>frmClientCommands.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdateExpDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateExpDate.Designer.cs">
+      <DependentUpon>frmUpdateExpDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWorkstationHistoryPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWorkstationHistoryPopUp.Designer.cs">
+      <DependentUpon>frmWorkstationHistoryPopUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAdmin.resx">
       <DependentUpon>frmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClientCommands.resx">
+      <DependentUpon>frmClientCommands.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateExpDate.resx">
+      <DependentUpon>frmUpdateExpDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWorkstationHistoryPopUp.resx">
+      <DependentUpon>frmWorkstationHistoryPopUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

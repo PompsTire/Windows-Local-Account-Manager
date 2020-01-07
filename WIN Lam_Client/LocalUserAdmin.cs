@@ -37,7 +37,11 @@ namespace WIN_Lam_Client
                 using (PrincipalContext context = new PrincipalContext(ContextType.Machine))
                 {
                     UserPrincipal user = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, userName);
-                    user.Enabled = false;
+
+                    if (user == null)
+                        throw new ApplicationException("User " + userName + " Not Found");
+                    else
+                        user.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -53,7 +57,11 @@ namespace WIN_Lam_Client
                 using (PrincipalContext context = new PrincipalContext(ContextType.Machine))
                 {
                     UserPrincipal user = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, userName);
-                    user.Enabled = true;
+
+                    if (user == null)
+                        throw new ApplicationException("User " + userName + " Not Found");
+                    else
+                        user.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -69,7 +77,11 @@ namespace WIN_Lam_Client
                 using (PrincipalContext context = new PrincipalContext(ContextType.Machine))
                 {
                     UserPrincipal user = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, userName);
-                    user.Delete();
+
+                    if (user == null)
+                        throw new ApplicationException("User " + userName + " Not Found");
+                    else
+                        user.Delete();
                 }
             }
             catch (Exception ex)
@@ -101,7 +113,10 @@ namespace WIN_Lam_Client
                 using (PrincipalContext context = new PrincipalContext(ContextType.Machine))
                 {
                     UserPrincipal user = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, userName);
-                    user.ChangePassword(oldPassword, newPassword);
+                    if (user == null)
+                        throw new ApplicationException("user " + userName + " not found");
+                    else
+                        user.ChangePassword(oldPassword, newPassword);
                 }
             }
             catch (Exception ex)

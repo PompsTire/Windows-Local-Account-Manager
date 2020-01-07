@@ -48,6 +48,40 @@ namespace WIN_Lam_Client
             return dictSettings;
         }
 
+        public DataTable GetQueuedComms(string localPC)
+        {
+            String sSql = "EXEC Pomps.dbo.up_WS_Admin_GetQueuedComms ";
+            sSql += "@WorkstationName = '" + localPC + "' ";
+            DataTable dt = new DataTable();
+            try
+            {
+                SqlDataAdapter objDA = new SqlDataAdapter(sSql, ConStr);
+                objDA.Fill(dt);
+            }
+            catch(Exception ex)
+            { SetError(ex.Message); }
+            return dt;
+        }
+
+        public bool UpdateExecutedComm(string pkid, string errorMessages)
+        {
+            StringBuilder sb = new StringBuilder("EXEC Pomps.dbo.up_WS_Admin_ExecutedComm ");
+            sb.Append("@PKID = " + pkid.ToString() + ", ");
+            sb.Append("@ErrorMessages = '" + errorMessages + "' ");
+
+            try
+            {
+                SqlCommand objComm = new SqlCommand(sb.ToString(), new SqlConnection(ConStr));
+                objComm.Connection.Open();
+                objComm.ExecuteNonQuery();
+                objComm.Connection.Close();
+            }
+            catch(Exception ex)
+            { SetError(ex.Message); }
+
+            return !m_isError;
+        }
+
         public void UpdateWorkstationAccountRecord(string localPC, string localAcctName, string localPwd, int nextUpdateDays, string errorMsgs)
         {
             StringBuilder sb = new StringBuilder("EXEC Pomps.dbo.up_WS_Admin_UpdateActivity ");
@@ -73,7 +107,8 @@ namespace WIN_Lam_Client
             Dictionary<string, string> curRecs = new Dictionary<string, string>();
             StringBuilder sb = new StringBuilder("EXEC Pomps.dbo.up_WS_Admin_CheckUpdateStatus ");
             sb.Append("@WorkstationName = '" + localPC + "', ");
-            sb.Append("@userID = '" + userID + "' ");
+            sb.Append("@userID = '" + userID + "', ");
+            sb.Append("@IsClientLogin = 1");
             SqlDataAdapter objDA = new SqlDataAdapter(sb.ToString(), ConStr);
             DataTable dt = new DataTable();
 
