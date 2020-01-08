@@ -36,7 +36,8 @@ namespace WIN_Lam_Admin
             txtPassword1.Visible = false;
             txtPassword2.Visible = false;
             m_command = "";
-            this.Text = "Account Update History For " + m_workstationName.ToUpper();
+            this.Text = "Update Local Accounts For " + m_workstationName.ToUpper();
+
             txtAccountID.Focus();
             dgvWShistory.Dock = DockStyle.Fill;
             LoadHistComms();
@@ -221,12 +222,21 @@ namespace WIN_Lam_Admin
         private void button1_Click(object sender, EventArgs e)
         {
             string usr = txtUser.Text;
-            cls_ADS objADS = new cls_ADS();
-            List<string> userRoles = objADS.GetUserRoles(usr);
             StringBuilder sb = new StringBuilder();
-            foreach(String sX in userRoles)
+            if (usr.Length > 0)
             {
-                sb.Append(sX + "\r\n");
+                cls_ADS objADS = new cls_ADS();
+                List<string> userRoles = objADS.GetUserRoles(usr);
+                
+                foreach (String sX in userRoles)
+                {
+                    sb.Append(sX + "\r\n");
+                }
+            }
+            else
+            {
+                sb.Append("Enter a User Name");
+                txtUser.Focus();
             }
             MessageBox.Show(sb.ToString());
 

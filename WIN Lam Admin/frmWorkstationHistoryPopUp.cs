@@ -15,6 +15,7 @@ namespace WIN_Lam_Admin
         public frmWorkstationHistoryPopUp()
         {
             InitializeComponent();
+            WSHP_SelectedWorkstation = "";
         }
 
         private ContextMenu m_ctxGridMnu;
@@ -23,8 +24,10 @@ namespace WIN_Lam_Admin
           
         private void frmWorkstationHistoryPopUp_Load(object sender, EventArgs e)
         {
-            dgvWorkstationHistory.Dock = DockStyle.Fill;
-            dgvWorkstationHistory.DataSource = WSHP_workStations;
+            CreateCTXMenu();
+            CustomizeGrid();
+            LoadGrid();
+            this.Text = "Account Update History For " + WSHP_SelectedWorkstation;
         }
         private void dgvWorkstationHistory_MouseDown(object sender, MouseEventArgs e)
         {
@@ -54,13 +57,18 @@ namespace WIN_Lam_Admin
             m_selRow["MaskedPwd"] = unEnc;
         }
 
-
-        private void InitStuff()
+        private void CreateCTXMenu()
         {            
             dgvWorkstationHistory.MouseDown += new MouseEventHandler(dgvWorkstationHistory_MouseDown);
             m_ctxGridMnu = new ContextMenu();
             mnuShowPassword = new MenuItem("Show Password", mnu_ShowPassword);
             m_ctxGridMnu.MenuItems.Add(mnuShowPassword);
+        }
+
+        private void LoadGrid()
+        {
+            dgvWorkstationHistory.Dock = DockStyle.Fill;
+            dgvWorkstationHistory.DataSource = WSHP_workStations;
         }
 
         private void CustomizeGrid()
@@ -77,7 +85,7 @@ namespace WIN_Lam_Admin
             dc[1].Name = "WorkstationName";
             dc[1].HeaderText = "Workstation";
             dc[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dc[1].Visible = true;
+            dc[1].Visible = false;
             dc[1].Width = 100;
 
             dc[2] = new DataGridViewTextBoxColumn();
@@ -134,6 +142,8 @@ namespace WIN_Lam_Admin
 
         public string WSHP_Key1 { get; set; }
         public string WSHP_Key2 { get; set; }
+
+        public string WSHP_SelectedWorkstation { set; get; }
 
     }
 }

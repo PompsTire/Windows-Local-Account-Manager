@@ -33,6 +33,8 @@
             this.txtAccountID = new System.Windows.Forms.TextBox();
             this.lblAccountID = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.rdoChangePassword = new System.Windows.Forms.RadioButton();
@@ -53,8 +55,6 @@
             this.CommandExecutedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpdatedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpdatedDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.txtUser = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWShistory)).BeginInit();
             this.SuspendLayout();
@@ -98,6 +98,25 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(879, 132);
             this.panel1.TabIndex = 11;
+            // 
+            // txtUser
+            // 
+            this.txtUser.Location = new System.Drawing.Point(596, 56);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(175, 20);
+            this.txtUser.TabIndex = 24;
+            this.txtUser.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(596, 82);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 36);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnCancel
             // 
@@ -225,6 +244,7 @@
             this.UpdatedDateTime});
             this.dgvWShistory.EnableHeadersVisualStyles = false;
             this.dgvWShistory.Location = new System.Drawing.Point(12, 147);
+            this.dgvWShistory.MultiSelect = false;
             this.dgvWShistory.Name = "dgvWShistory";
             this.dgvWShistory.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -298,23 +318,6 @@
             this.UpdatedDateTime.Name = "UpdatedDateTime";
             this.UpdatedDateTime.ReadOnly = true;
             this.UpdatedDateTime.Width = 130;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(596, 82);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 36);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtUser
-            // 
-            this.txtUser.Location = new System.Drawing.Point(596, 56);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(175, 20);
-            this.txtUser.TabIndex = 24;
             // 
             // frmClientCommands
             // 
