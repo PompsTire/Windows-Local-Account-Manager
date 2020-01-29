@@ -108,6 +108,8 @@ namespace WIN_Lam_Client
 
         public bool ChangeLocalPassword(string userName, string oldPassword, string newPassword)
         {
+            // Local security policy as of 1/29/2020 at pomps is that password cannot be changed more 
+            //  than 1 time in a 24 hour period.
             try
             {
                 using (PrincipalContext context = new PrincipalContext(ContextType.Machine))

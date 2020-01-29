@@ -52,7 +52,7 @@ namespace WIN_Lam_Client
                     Console.WriteLine("Updating User Account");
                     string oldEncryptedPassword = curRecs["AdminPwd"];
                     string oldDecryptedPassword = objAES.SimpleDecryptWithPassword(oldEncryptedPassword, key1, key2.Length);
-                    objLUA.ChangeLocalPassword(userAccountName, oldDecryptedPassword, newEncryptedPassword);
+                    objLUA.ChangeLocalPassword(userAccountName, oldDecryptedPassword, userAccountPassword);
                 }
                 else
                 {
