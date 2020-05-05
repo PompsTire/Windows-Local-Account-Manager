@@ -21,11 +21,16 @@ namespace WIN_Lam_Client
         public bool VerifyLocalUserExists(string userName)
         {
             bool userExists = false;
-            using (PrincipalContext context = new PrincipalContext(ContextType.Machine))
+            try
             {
-                UserPrincipal up = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, userName);
-                userExists = (up != null);
+                using (PrincipalContext context = new PrincipalContext(ContextType.Machine))
+                {
+                    UserPrincipal up = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, userName);
+                    userExists = (up != null);
+                }
             }
+            catch(Exception ex)
+            { SetError(ex.Message); }
 
             return userExists;
         }

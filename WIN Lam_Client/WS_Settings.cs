@@ -18,6 +18,35 @@ namespace WIN_Lam_Client
             ClearError();
         }
 
+        public bool VerifyCanConnect(int connTimeout)
+        {
+            bool canConnect = false;
+            SqlConnection objConn = null; 
+            try
+            {
+                SqlConnectionStringBuilder objSQB = new SqlConnectionStringBuilder();
+                objSQB.ConnectionString = ConStr;
+                objSQB.ConnectTimeout = connTimeout;
+                objConn = new SqlConnection(ConStr);
+                objConn.Open();
+
+                if (objConn.State == ConnectionState.Open)
+                    canConnect = true;
+                else
+                    throw new ApplicationException("Failed to Open SQL Connection");
+
+                objConn.Close();
+            }
+            catch(Exception ex)
+            {
+                SetError(ex.Message);
+                canConnect = false;
+            }
+            finally
+            {  }
+            return canConnect;
+        }
+
         public Dictionary<string, string> GetAppSettings()
         {
             Dictionary<string, string> dictSettings = new Dictionary<string, string>();
@@ -141,6 +170,7 @@ namespace WIN_Lam_Client
                 sConStr.UserID = "ExternalSysUser";
                 sConStr.Password = "aLg36R12!";
                 sConStr.InitialCatalog = "Pomps";
+                sConStr.ConnectTimeout = 20;
                 return sConStr.ConnectionString;
             }
         }

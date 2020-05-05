@@ -37,8 +37,8 @@ namespace WIN_Lam_Admin
             GetUserAuthLevel();
             LoadSettings();
             CustomizeGrid();
-
             LoadWorkstations();
+            this.KeyUp += new KeyEventHandler(KeyEvent);
             ClearError();
         }
 
@@ -237,7 +237,8 @@ namespace WIN_Lam_Admin
                 objDA.Fill(m_workStationActivities);
                 m_workStationActivities.Tables[0].TableName = "Workstations";
                 m_workStationActivities.Tables[1].TableName = "History";
-                                
+
+                dgvWorkstations.DataSource = null;
                 dgvWorkstations.DataSource = m_workStationActivities.Tables[0];
                 dgvWorkstations.Dock = DockStyle.Fill;
             }
@@ -283,7 +284,7 @@ namespace WIN_Lam_Admin
             dc[4] = new DataGridViewTextBoxColumn();
             dc[4].DataPropertyName = "LastLoginDateTime";
             dc[4].Name = "LastLoginDateTime";
-            dc[4].HeaderText = "Last Login";
+            dc[4].HeaderText = "Last Check-In";
             dc[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dc[4].Visible = true;
             dc[4].Width = 130;
@@ -317,6 +318,20 @@ namespace WIN_Lam_Admin
         }
 
         private string SQL_Workstations => "EXEC Pomps.dbo.up_WS_Admin_GetActivityHistory ";
+
+        private void KeyEvent(object sender, KeyEventArgs e)
+        {
+            string sTmp = this.Text;
+            this.Text = sTmp + " - Refreshing...";
+            Application.DoEvents();
+            if(e.KeyCode == Keys.F5)
+            {
+                LoadSettings();
+                CustomizeGrid();
+                LoadWorkstations();
+            }
+            this.Text = sTmp;
+        }
 
         private void SetError(string msg)
         {

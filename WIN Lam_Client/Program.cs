@@ -16,14 +16,20 @@ namespace WIN_Lam_Client
         static void Main(string[] args)
         {
             WS_Settings objWS = new WS_Settings();
+            // Check to see if we can connect to the SQL server. This will verify that we are on the network and
+            //  can log any changes we make to the local user accounts. Exit if connect = false
+            Console.WriteLine("Verifying Connection to SQL");            
+            if (objWS.VerifyCanConnect(20) == false)
+                Environment.Exit(-1);
+
             LocalUserAdmin objLUA = new LocalUserAdmin();
             AESHMAC_CRYPTO objAES = new AESHMAC_CRYPTO();
             localPC = System.Environment.MachineName;
-
+            
             // Get the settins: keys, account name etc
             Console.WriteLine("Getting App Settings");
             Dictionary<string, string> appSettings = objWS.GetAppSettings();
-
+              
             // Check last time password was updated, Key is pc name and the user ID
             Console.WriteLine("Checking Action Log");
             Dictionary<string, string> curRecs = objWS.GetUpdatePwdStatus(localPC, appSettings["localUserID"].ToString());

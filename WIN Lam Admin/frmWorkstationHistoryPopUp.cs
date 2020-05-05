@@ -107,7 +107,7 @@ namespace WIN_Lam_Admin
             dc[4] = new DataGridViewTextBoxColumn();
             dc[4].DataPropertyName = "LastLoginDateTime";
             dc[4].Name = "LastLoginDateTime";
-            dc[4].HeaderText = "Last Login";
+            dc[4].HeaderText = "Last Check-In";
             dc[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dc[4].Visible = true;
             dc[4].Width = 130;
