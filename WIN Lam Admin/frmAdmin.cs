@@ -58,7 +58,7 @@ namespace WIN_Lam_Admin
 
             slblWhoAreYou.Text = user;
             cls_ADS objAD = new cls_ADS();
-            if(objAD.IsInGroup(user,"Tier 1 Admins") || user == "michael.joncas" || user == "dbarrett")
+            if(objAD.IsInGroup(user,"Tier 1 Admins") || user.ToLower() == "michael.joncas" || user.ToLower() == "mjoncas")
             {
                 m_canSeePasswords = true;
             }
